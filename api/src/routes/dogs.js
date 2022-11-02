@@ -5,14 +5,18 @@ const { Sequelize } = require('sequelize');
 // api =  https://api.thedogapi.com/v1/breeds
 const router = Router();
 
+
+
 async function apiInfo() {
     const api = await axios.get('https://api.thedogapi.com/v1/breeds')
      let info = api.data.map((d) => {
         return {
             Id: d.id,
             Name: d.name,
-            Height: `${d.height.metric} cm`,
-            Weight: `${ d.weight.metric } Kg`,
+            Height_Min: parseInt(d.height.metric.slice(0, 2).trim()),
+            Height_Max: parseInt(d.height.metric.slice(4).trim()),
+            Weight_Min: parseInt(d.weight.imperial.slice(0, 2).trim()),
+            Weight_Max: parseInt(d.weight.imperial.slice(4).trim()),
             YearsOfLife: d.life_span,
             Temperament: d.temperament,
             Image: d.image.url
@@ -69,7 +73,7 @@ router.get('/:id', async (req, res) => {
     };
 });
 
-router.post('/', async (req, res) => {
+router.post('/create', async (req, res) => {
     const { Name, Height, Weight, YearsOfLife, Image, Temperaments} = req.body
 
     if(!Name || !Height || !Weight)  return res.status(404).send("faltan datos");
@@ -95,83 +99,3 @@ router.post('/', async (req, res) => {
 //🐾
 
 module.exports = router;
-
-  
-/*
-
-async function apiInfo() {
-    const api = await axios.get('https://api.thedogapi.com/v1/breeds')
-     let info = api.data.map((d) => {
-        return {
-            Id: d.id,
-            Name: d.name,
-            Height: `${d.height.metric} cm`,
-            Weight: `${ d.weight.metric } Kg`,
-            YearsOfLife: d.life_span,
-            Image: d.image.url
-        };
-   });
-   return info;
-};
-
-async function db() {
-    const db = await Dog.findAll({
-        include: [{
-            model: Temperament,
-              attributes: [
-                "Name"
-              ],
-              through: {attributes:[]}
-        }],
-    });
-    return db;
-};
-
-router.get('/', async (req, res) => {
-    const { name } = req.query
-    const infoApi = await apiInfo();
-    const dataBase = await db();
-    const allDogs = infoApi.concat(dataBase);
-    
-    if(name && allDogs) {
-        const findDog = allDogs.filter(el => el.Name.toLowerCase().include === name.toLowerCase())
-             
-        return res.status(200).send(findDog);
-    }
-           
-    if(!name && allDogs) {
-        return res.status(200).send(allDogs)
-    };
-    
-});
-
-
-router.get('/:id', async (req, res) => {
-    const { id } = req.params;
-    const infoApi = await apiInfo();
-    const dataBase = await db();
-    const allDogs = infoApi.concat(dataBase);
-     
-    if(id && allDogs) {
-        const dogId = allDogs.filter(d => d.Id == id)
-
-         return res.status(200).send(dogId);
-    }
-     else {
-        return res.status(404).send(allDogs)        
-    };
-});
-
-router.post('/', async (req, res) => {
-    const { Name, Height, Weight, YearsOfLife, Image } = req.body
-
-    if(!Name || !Height || !Weight) return res.status(404).send("faltan datos");
-    
-    try {
-        const newDog = await Dog.create(req.body);
-
-        return res.status(200).send(newDog);
-    } catch(error) {
-        res.status(404).send("No se creo nada")
-    };
-});*/

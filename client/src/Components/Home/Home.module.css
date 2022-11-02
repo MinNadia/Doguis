@@ -1,0 +1,9 @@
+.conteinerDog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;/*  el vw agarra el ancho completo de la pantalla */
+    flex-wrap: wrap;
+    flex-direction: row;
+
+}

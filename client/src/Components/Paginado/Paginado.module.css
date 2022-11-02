@@ -1,0 +1,23 @@
+.conteiner {
+    display: flex;   
+}
+
+.paginado {
+   flex-wrap: nowrap;
+   display: flex;
+   width: 100vw;
+   height: 50px;
+   justify-content: center;
+   margin: 5px;
+   
+}
+
+.number {
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    box-shadow: 0px 0px 5px rgb(43, 38, 38);
+    font-size: 20px;
+    width: 40px;
+
+}

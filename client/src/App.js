@@ -10,10 +10,10 @@ function App() {
   return (
      <div className="App">
         <Route exact path = '/' component = {LandingPage} />
-        <Route exact path = '/dogs' component = {Nav} />
+        {/* <Route exact path = '/dogs' component = {Nav} /> */}
         <Route exact path = '/dogs' component = {Home} />
-        <Route exact path = '/dogs/' component = {DogCreate} />
-        <Route exact path = '/dogs/:id' component = {DogDetails} />
+        <Route exact path = '/dogs/create' component = {DogCreate} />
+        <Route exact path = '/dogs/:id' component = {DogDetails} /> 
       </div>
   );
 };

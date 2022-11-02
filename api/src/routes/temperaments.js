@@ -21,9 +21,6 @@ router.get('/', async (req, res) => {
   const tempSplit = temperament?.map(temperament => temperament.Name?.split(","));
   const tempJoin = tempSplit.join(",").split(",");
   
-  console.log("1", tempJoin);
-  
-
   if(tempJoin) {  
     
     tempJoin.forEach(e => {
