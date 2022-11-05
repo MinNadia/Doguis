@@ -12,16 +12,15 @@ async function apiTemp() {
              Name: t.temperament
           }
         });
-        // console.log("1", info)
         return info;
 };
 
 router.get('/', async (req, res) => {
   const temperament = await apiTemp();
-  const tempSplit = temperament?.map(temperament => temperament.Name?.split(","));
+  const tempSplit = temperament?.map(temperament => temperament.Name?.split(", "));
   const tempJoin = tempSplit.join(",").split(",");
-  
-  if(tempJoin) {  
+  console.log("1", tempJoin)
+  if(tempJoin) {
     
     tempJoin.forEach(e => {
       Temperament.findOrCreate({
@@ -35,14 +34,16 @@ router.get('/', async (req, res) => {
         model: Dog,
         attributes:[
           "Name",
-          "Height",
-          "Weight",
+          "Height_Min",
+          "Height_Max",
+          "Weight_Min",
+          "Weight_Max",
           "YearsOfLife"
         ],
         through: {attributes:{}}
       }],
     });
-    // console.log("2", dbTemp);
+    
     return res.status(200).send(dbTemp);
 
   } else {

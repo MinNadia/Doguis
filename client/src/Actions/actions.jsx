@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 
 export const GET_ALL_DOGS = "GET_ALL_DOGS";
 export const GET_NAME_DOG = "GET_NAME_DOG";
@@ -10,7 +10,6 @@ export const FILTER_BY_CREATE = "FILTER_BY_CREATE";
 export const ORDER_BY_AZ = "ORDER_BY_AZ";
 export const ORDER_BY_WEIGHT = "ORDER_BY_WEIGHT";
 export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS";
-
 
 
 export function getAllDogs() {
@@ -53,7 +52,7 @@ export function getDogDetails(id) {
 
 export function postNewDog(payload) {
     return async function(dispatch) {
-        var newDog = await axios.post('http://localhost:3001/dogs/create', {payload});
+        const newDog = await axios.post('http://localhost:3001/dogs/create', payload);
         return dispatch({
             type: 'POST_NEW_DOG',
             payload: newDog.data
@@ -77,26 +76,7 @@ export function filterByTemperament(payload) {
         payload
     }
 };
-     /*
-      return function(dispatch) {
-        var temperament = axios.get('http://localhost:3001/temperaments');
-          return dispatch({
-            type: FILTER_BY_TEMPERAMENT,
-            payload: temperament.data
-          }); */
-
-
-    //     return (dispatch) => {
-    //       return axios("/temperaments")
-    //         .then((data) => dispatch({ type: GET_TEMPERAMENTS, payload: data.data }))
-    //         .catch((error) => alert(error.message));
-    //     };
-    // return {
-    //     type: 'FILTER_BY_TEMPERAMENT',
-    //     payload
-    // };
-
-
+   
 export function filterByCreate(payload) {
     return {
         type: 'FILTER_BY_CREATE',

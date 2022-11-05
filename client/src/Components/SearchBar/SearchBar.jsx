@@ -12,13 +12,12 @@ export default function SearchBar() {
 
     function handleInputChange(e) {
         e.preventDefault()
-        setName(e.target.value)
-        
+        setName(e.target.value);        
     };
 
     function handleSubmit(e) {
         e.preventDefault()
-        dispatch(getNameDog(name))
+        dispatch(getNameDog(name));
     };
 
     console.log(name)

@@ -26,7 +26,7 @@ export default function DogDetails(props) {
                       <p>Height: {`${myDog[0].Height_Min} - ${myDog[0].Height_Max} cm`}</p>
                       <p>Weight: {`${myDog[0].Weight_Min} - ${myDog[0].Weight_Max} Kg`}</p>
                       <p>Years of Life: {myDog[0].YearsOfLife}</p>
-                      <p>Temperaments: {myDog[0].Temperament}</p>
+                      <p>Temperaments: {myDog[0].Temperaments}</p>
                   </div>
                   <img src = {myDog[0].Image} alt= "Image of a dog" className={st.image} />
                   </div>

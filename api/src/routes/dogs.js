@@ -18,7 +18,7 @@ async function apiInfo() {
             Weight_Min: parseInt(d.weight.imperial.slice(0, 2).trim()),
             Weight_Max: parseInt(d.weight.imperial.slice(4).trim()),
             YearsOfLife: d.life_span,
-            Temperament: d.temperament,
+            Temperaments: d.temperament,
             Image: d.image.url
         };
    });
@@ -53,7 +53,6 @@ router.get('/', async (req, res) => {
     if(!name && allDogs) {
         return res.status(200).send(allDogs)
     };
-    
 });
 
 
@@ -68,33 +67,44 @@ router.get('/:id', async (req, res) => {
 
          return res.status(200).send(dogId);
     }
+
      else {
         return res.status(404).send(allDogs)        
     };
 });
 
 router.post('/create', async (req, res) => {
-    const { Name, Height, Weight, YearsOfLife, Image, Temperaments} = req.body
+    const { Name, 
+            Height_Min, 
+            Height_Max, 
+            Weight_Min, 
+            Weight_Max, 
+            YearsOfLife, 
+            Image, 
+            Temperaments} = req.body
 
-    if(!Name || !Height || !Weight)  return res.status(404).send("faltan datos");
-    
+    // if(!Name || !Height_Min || !Height_Max || !Weight_Min || !Weight_Max)  return res.status(404).send("faltan datos");
+            
         const newDog = await Dog.create({
             Name, 
-            Height, 
-            Weight, 
+            Height_Min, 
+            Height_Max, 
+            Weight_Min, 
+            Weight_Max, 
             YearsOfLife, 
             Image
         });
-        console.log(newDog);
+        
         //buscamos en Country el pais relacionado con la actividad que acabamos de crear
         const tempDb = await Temperament.findAll({
             where: { Name: Temperaments }
         })
-
+                 
         //le agregamos el pais a la actividad que creamos
-        newDog.addTemperament(tempDb)
+        await newDog.addTemperament(tempDb)
 
         return res.status(200).send(newDog);
+
 });
 //🐾
 

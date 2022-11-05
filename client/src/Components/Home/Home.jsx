@@ -23,10 +23,15 @@ console.log("3", dogsAll)
     setCurrentPage(pageNumber)
   };
 
+  function handleClick(e) {
+    e.preventDefault();
+    dispatch(getAllDogs());
+  };
+
   useEffect(() => {
     dispatch(getAllDogs());
 },[dispatch]);
-  
+
   
   return (
         <><div>
@@ -38,12 +43,13 @@ console.log("3", dogsAll)
           dogsPerPage={dogsPerPage}
           dogsAll={dogsAll.length}
           paginado={paginado} />
+        <button onClick={e => {handleClick(e)}}>Refresh</button>
         <div className={st.conteinerDog}>
           {currentDog && currentDog.map((d) => {
             return (
-              <Card image={d.Image} name={d.Name} weight={`${d.Weight_Min} - ${d.Weight_Max} Kg`} temperament={d.Temperament} key={d.Id} id={d.Id} />
-            );
-          })};
+              <Card image={d.Image} name={d.Name} weight={`${d.Weight_Min} - ${d.Weight_Max} Kg`} temperament={d.Temperaments} key={d.Id} id={d.Id} />
+            )
+          })}
         </div>
       </div></>
     );

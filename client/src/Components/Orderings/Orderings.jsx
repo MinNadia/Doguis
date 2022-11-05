@@ -11,33 +11,31 @@ export default function Orderings() {
 
     useEffect(() => {
         dispatch(getAllDogs());
-    },[])
+    },[dispatch])
 
     function handleSortWeight(e) {
         e.preventDefault();
-        dispatch(orderByWeight(e.target.value))  
-        setOrder(`ordenado ${e.target.value}`)
+        dispatch(orderByWeight(e.target.value))
+        setOrder(`order ${e.target.value}`)
     };
 
     function handleSortAZ(e){
         e.preventDefault();
         dispatch(orderByAZ(e.target.value))
-        setOrder(`ordenado ${e.target.value}`)
+        setOrder(`order ${e.target.value}`)
     }
-
+    
     return (
         <><div className={st.conteiner}>
-            <select onChange={e => handleSortWeight(e)} className={st.input}>
+            <select onChange={(e) => handleSortWeight(e)} className={st.input}>
                 <option>-</option>
                 <option value="W.Max">Heavy</option>
                 <option value="W.Min">Light</option>
             </select>
-        </div>
-        <div>
-            <select onChange={e => handleSortAZ(e)}>
+            <select onChange={(e) => handleSortAZ(e)}>
                 <option>-</option>
-                <option value='A-Z'>A-Z</option>
-                <option value='Z-A'>Z-A</option>
+                <option value="A-Z">A-Z</option>
+                <option value="Z-A">Z-A</option>
             </select>
         </div></>
     );
