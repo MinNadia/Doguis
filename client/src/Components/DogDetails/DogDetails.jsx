@@ -7,14 +7,17 @@ import { getDogDetails } from "../../Actions/actions";
 import st from "./DogDetails.module.css";
 
 
+
 export default function DogDetails(props) {
     const dispatch = useDispatch();
     const myDog = useSelector((state) => state.dogDetails)
 
-    useEffect(() => {   console.log("holaaaaa");
+    useEffect(() => {   
         dispatch(getDogDetails(props.match.params.id));
     },[])
     console.log("1", myDog)
+
+
     if(Object.entries(myDog).length) {
         return (
             <div className={st.background}> {  
@@ -26,7 +29,8 @@ export default function DogDetails(props) {
                       <p>Height: {`${myDog[0].Height_Min} - ${myDog[0].Height_Max} cm`}</p>
                       <p>Weight: {`${myDog[0].Weight_Min} - ${myDog[0].Weight_Max} Kg`}</p>
                       <p>Years of Life: {myDog[0].YearsOfLife}</p>
-                      <p>Temperaments: {myDog[0].Temperaments}</p>
+                      <p>Temperaments: {myDog[0].Temperaments || myDog[0].temperaments.map((t) => t.Name + (", "))}</p>
+                      {/* <p>Temperaments: {myDog[0].Temperaments}</p> */}
                   </div>
                   <img src = {myDog[0].Image} alt= "Image of a dog" className={st.image} />
                   </div>
@@ -41,26 +45,3 @@ export default function DogDetails(props) {
         };
 };
 
-
-
-/**
-<div> 
-                <h1>{myDog.Name}</h1>
-                <div>
-                    <p>Height: {myDog.Height}</p>
-                    <p>Weight: {myDog.Weight}</p>
-                    <p>Years of Life: {myDog.YearsOfLife}</p>
-                    {myDog.temperaments.length ? myDog.temperaments.map(el => <p>{el.Name + (' ')}</p>) : <p>"no hay nada"</p>}
-                </div>
-                <div>
-                   <img src={myDog.Image} alt="Image of a dog" />
-                </div>            
-                <Link to = '/dogs'>
-                   <button>Come Back</button>
-                </Link>
-            </div>
-        )} else {
-            return <p>Loading...</p>
-        };
-};
- */

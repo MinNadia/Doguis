@@ -70,10 +70,10 @@ export function getTemperaments() {
     };
 };
 
-export function filterByTemperament(payload) {
+export function filterByTemperament(temperament) {
     return {
         type: 'FILTER_BY_TEMPERAMENT',
-        payload
+        payload: temperament
     }
 };
    

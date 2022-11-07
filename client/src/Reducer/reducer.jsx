@@ -54,14 +54,14 @@ function rootReducer(state = initialState, action) {
             };
             
         case FILTER_BY_TEMPERAMENT:
-            // const allDoguis = state.filtersDogs
+            const allDoguis = state.filtersDogs
             
-            // const filterTemp = action.payload === "All" ? allDoguis : 
-            // allDoguis.filter(el => el.Temperament?.includes(action.payload));
+            const filterTemp = action.payload === "All" ? allDoguis : 
+            allDoguis.filter(el => el.Temperaments?.includes(action.payload.trim()));
             
             return {
                 ...state,
-                dogs: state.filtersDogs.filter(dog => dog.temperament?.includes(action.payload))
+                dogs: [...filterTemp]
             };
 
         case FILTER_BY_CREATE:
@@ -70,15 +70,14 @@ function rootReducer(state = initialState, action) {
             const filterCreate = action.payload === "Created" ? 
                                  allDog.filter(el => el.CreateDb) :
                                  allDog.filter(el => !el.CreateDb)
-                                 
-                                //  console.log("7", filterCreate)            
+                                            
             return {
                 ...state,
                 dogs: action.payload === "All" ? state.filtersDogs : filterCreate
             }
             
         case ORDER_BY_WEIGHT:
-            const sortWeight = action.payload === "W.Min" ?
+            const sortWeight = action.payload === "W.Max" ?
         
             state.dogs.sort(function(a, b) {
                 if( a.Weight_Max > b.Weight_Max) {

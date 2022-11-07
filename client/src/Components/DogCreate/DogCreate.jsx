@@ -30,9 +30,14 @@ export default function DogCreate() {
     function handleSelect(e) {
         setInput({
             ...input,
-            Temperaments: [...input.Temperaments, e.target.value]
+            Temperaments: input.Temperaments.includes(e.target.value) ?
+                          input.Temperaments :
+                          [...input.Temperaments, e.target.value]               
             // Temperaments: Array.from(new Set([input.Temperaments, e.target.value]))
-        });
+        }); 
+        // if(Array.isArray(input.Temperaments)) { 
+        //     input.Temperaments.toString()
+        // }   
     };
 
     function handleSubmit(e) {
@@ -89,6 +94,7 @@ export default function DogCreate() {
                       )}
                     )}
                 </select>
+                <ul><li>{input.Temperaments.map(el => el + ", ")}</li></ul>
 
                 <br/>
                 <button type='Submit'>Create breed</button>

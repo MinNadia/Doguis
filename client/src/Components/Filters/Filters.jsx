@@ -54,3 +54,11 @@ export default function Filters() {
     );
 };
 
+
+
+/*
+ filterByTemperament(dispatch, resetArrays, filterByTemperaments) {
+    dispatch(resetArrays());
+    const optionsTemp = document.getElementById("filter-temp").value;
+    dispatch(filterByTemperaments(optionsTemp));
+  }, */
