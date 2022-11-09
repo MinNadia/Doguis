@@ -23,6 +23,9 @@ function rootReducer(state = initialState, action) {
     switch(action.type) {
 
         case GET_ALL_DOGS:
+           action.payload.forEach((t) => {if(t.CreateDb) t.temperaments = t.temperaments.map(d => d.Name).join(", ")})
+            console.log("2", action.payload)
+
             return {
                 ...state,
                 dogs: action.payload,
@@ -57,7 +60,7 @@ function rootReducer(state = initialState, action) {
             const allDoguis = state.filtersDogs
 
             const filterTemp = action.payload === "All" ? allDoguis :
-                              allDoguis.filter(el => el.Temperaments?.includes(action.payload.trim()) || el.temperaments?.map(t => t.Name).includes(action.payload))
+                              allDoguis.filter(el => el.Temperaments?.includes(action.payload.trim()) || el.temperaments?.includes(action.payload))
                        
             return {
                 ...state,
