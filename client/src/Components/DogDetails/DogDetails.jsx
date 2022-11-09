@@ -14,8 +14,8 @@ export default function DogDetails(props) {
 
     useEffect(() => {   
         dispatch(getDogDetails(props.match.params.id));
-    },[])
-    console.log("1", myDog)
+    },[dispatch])
+    
 
 
     if(Object.entries(myDog).length) {
@@ -30,7 +30,6 @@ export default function DogDetails(props) {
                       <p>Weight: {`${myDog[0].Weight_Min} - ${myDog[0].Weight_Max} Kg`}</p>
                       <p>Years of Life: {myDog[0].YearsOfLife}</p>
                       <p>Temperaments: {myDog[0].Temperaments || myDog[0].temperaments}</p>
-                      {/* <p>Temperaments: {myDog[0].Temperaments}</p> */}
                   </div>
                   <img src = {myDog[0].Image} alt= "Image of a dog" className={st.image} />
                   </div>
@@ -41,7 +40,7 @@ export default function DogDetails(props) {
             </Link>
             </div>  
         )} else {
-              return <p className={st.loading}>Loading...</p>
+              return <p className={st.loading}>  </p>
         };
 };
 

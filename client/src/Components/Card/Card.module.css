@@ -37,9 +37,8 @@
 .image {
     margin: 0;
     display: flex;
-    width: 250px;
-    height: 150px;
+    width: 300px;
+    height: 170px;
     border-radius: 15px;
-    justify-content: space-around;
-    
+    justify-content: space-around;    
 }

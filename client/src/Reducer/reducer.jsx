@@ -24,7 +24,6 @@ function rootReducer(state = initialState, action) {
 
         case GET_ALL_DOGS:
            action.payload.forEach((t) => {if(t.CreateDb) t.temperaments = t.temperaments.map(d => d.Name).join(", ")})
-            console.log("2", action.payload)
 
             return {
                 ...state,

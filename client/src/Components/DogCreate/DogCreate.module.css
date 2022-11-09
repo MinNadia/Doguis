@@ -1,3 +1,36 @@
-.error {
-    color: red
+.background {
+    height: 600px;
+}
+
+.botonVolver {
+    justify-content: left;
+    width: 100px;
+    height: 50px;
+    background-color:darkcyan;
+}
+
+.form {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.botonX {
+    justify-content:left;
+    align-items:flex-start;
+    background-color: red;
+    
+}
+
+.temp { 
+    width: 200px;
+    height: 40px;
+}
+
+.create {
+    width: 100px;
+    height: 40px;
+    background-color:darkcyan;
 }

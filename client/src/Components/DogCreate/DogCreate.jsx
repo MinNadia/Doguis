@@ -75,7 +75,7 @@ export default function DogCreate() {
     function handleDelete(el) {
         setInput({
             ...input,
-            Temperaments: input.Temperaments.filter(temp => temp !== el)
+            Temperaments: [...input.Temperaments.filter(temp => temp !== el)]
         });
     };
 
@@ -105,11 +105,11 @@ export default function DogCreate() {
     }, [dispatch]);
 
     return (
-        <div>
-            <Link to = '/dogs'><button>Come Back</button></Link>
+        <div className={st.background}>
+            <Link to = '/dogs'><button className={st.botonVolver}>Come Back</button></Link>
             <h1>Create new breed of dog</h1>
-            <form onSubmit={e => handleSubmit(e)}>
-                <div>
+            <form onSubmit={e => handleSubmit(e)} className={st.form}>
+                <div >
                     <label>Name: </label>
                     <input type='text' value={input.Name} name='Name' onChange={e => handleChange(e)} />
                     {errors.Name && (<h4 className={st.error}>{errors.Name}</h4>)}                    
@@ -149,13 +149,13 @@ export default function DogCreate() {
                 </select>
                 
                   {input.Temperaments.map(el => 
-                  <div>
-                     <p>{el}</p>
-                  <buton className="botonX" onclick={() => handleDelete(el)}>X</buton>
+                  <div className={st.temp}>
+                  <buton className={st.botonX} onclick={() => handleDelete(el)}>X</buton>
+                  <p>{el}</p>
                 </div>
-                )};
+                )}
                 <br/>
-                <button type='Submit' >Create breed</button>
+                <button type='Submit' className={st.create} >Create breed</button>
             </form>
         </div>
     );

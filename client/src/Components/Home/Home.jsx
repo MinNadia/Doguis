@@ -39,7 +39,7 @@ console.log("3", dogsAll)
       <Nav />
     </div>
     <div >
-        <h1>Holiiiis!!!</h1>
+        <h1>Doguiis!!!</h1>
         <Paginado
           dogsPerPage={dogsPerPage}
           dogsAll={dogsAll.length}

@@ -1,5 +1,4 @@
 import axios from "axios";
-// import { useDispatch } from "react-redux";
 
 export const GET_ALL_DOGS = "GET_ALL_DOGS";
 export const GET_NAME_DOG = "GET_NAME_DOG";
