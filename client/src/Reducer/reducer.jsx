@@ -47,7 +47,6 @@ function rootReducer(state = initialState, action) {
         case POST_NEW_DOG:
             return {
                 ...state,
-                // dogs: [...state.dogs, action.payload]
             };
 
         case GET_TEMPERAMENTS:

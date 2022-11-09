@@ -1,0 +1,21 @@
+.conteiner {
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    width: 300px;
+    height: 60px; 
+    align-items: center;
+}
+
+.origin {
+    width: 100px;
+    justify-content: space-around;
+}
+
+.temps {
+    width: 150px;
+}
+
+.name {
+    color:midnightblue;
+}

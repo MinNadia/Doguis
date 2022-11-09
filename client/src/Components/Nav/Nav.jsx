@@ -11,9 +11,11 @@ export default function Nav() {
         <div className={st.conteiner}>
             <Orderings />
             <Filters />
-            <SearchBar />
             <div>
-                <Link to = '/dogs/create' className={st.CreateRace}>Add new race</Link>
+            <SearchBar />
+              <div>
+                 <Link to = '/dogs/create' className={st.CreateRace}><button className={st.button}>Add new race</button></Link>
+              </div>
             </div>
         </div>
 

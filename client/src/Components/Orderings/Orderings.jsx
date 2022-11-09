@@ -27,12 +27,13 @@ export default function Orderings() {
     
     return (
         <><div className={st.conteiner}>
-            <select onChange={(e) => handleSortWeight(e)} className={st.input}>
+            <p className={st.name}>Orderings </p>
+            <select onChange={(e) => handleSortWeight(e)} className={st.weight}>
                 <option value = "All">-</option>
                 <option value="W.Max">Heavy</option>
                 <option value="W.Min">Light</option>
             </select>
-            <select onChange={(e) => handleSortAZ(e)}>
+            <select onChange={(e) => handleSortAZ(e)} className={st.abc}>
                 <option value = "All">-</option>
                 <option value="A-Z">A-Z</option>
                 <option value="Z-A">Z-A</option>

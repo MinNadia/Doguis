@@ -19,8 +19,6 @@ export default function SearchBar() {
         e.preventDefault()
         dispatch(getNameDog(name));
     };
-
-    console.log(name)
     
     return (
         <div className={st.conteiner}>

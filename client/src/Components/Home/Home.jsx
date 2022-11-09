@@ -34,16 +34,17 @@ console.log("3", dogsAll)
 
   
   return (
+    <div className={st.background}>
         <><div>
       <Nav />
     </div>
-    <div className={st.background}>
+    <div >
         <h1>Holiiiis!!!</h1>
         <Paginado
           dogsPerPage={dogsPerPage}
           dogsAll={dogsAll.length}
           paginado={paginado} />
-        <button onClick={e => {handleClick(e)}}>Refresh</button>
+        <button onClick={e => {handleClick(e)}} className={st.refresh}>Refresh</button>
         <div className={st.conteinerDog}>
           {currentDog && currentDog.map((d) => {
             return (
@@ -56,5 +57,6 @@ console.log("3", dogsAll)
           })}
         </div>
       </div></>
+    </div>
     );
 };

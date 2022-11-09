@@ -81,8 +81,6 @@ router.post('/create', async (req, res) => {
             YearsOfLife, 
             Image, 
             Temperaments} = req.body
-
-    // if(!Name || !Height_Min || !Height_Max || !Weight_Min || !Weight_Max)  return res.status(404).send("faltan datos");
             
         const newDog = await Dog.create({
             Name, 
@@ -94,12 +92,10 @@ router.post('/create', async (req, res) => {
             Image
         });
         
-        //buscamos en Country el pais relacionado con la actividad que acabamos de crear
         const tempDb = await Temperament.findAll({
             where: { Name: Temperaments }
         })
-                 
-        //le agregamos el pais a la actividad que creamos
+
         await newDog.addTemperament(tempDb)
 
         return res.status(200).send(newDog);

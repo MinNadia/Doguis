@@ -7,3 +7,16 @@
     flex-direction: row;
 
 }
+
+.background {
+    background-color: black;
+}
+
+
+.refresh {
+    width: 100px;
+    height: 30px;
+    color:black;
+    background-color: rgba(124, 168, 235, 0.829);
+   
+}
