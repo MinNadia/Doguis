@@ -55,10 +55,10 @@ function rootReducer(state = initialState, action) {
             
         case FILTER_BY_TEMPERAMENT:
             const allDoguis = state.filtersDogs
-            
-            const filterTemp = action.payload === "All" ? allDoguis : 
-            allDoguis.filter(el => el.Temperaments?.includes(action.payload.trim()));
-            
+
+            const filterTemp = action.payload === "All" ? allDoguis :
+                              allDoguis.filter(el => el.Temperaments?.includes(action.payload.trim()) || el.temperaments?.map(t => t.Name).includes(action.payload))
+                       
             return {
                 ...state,
                 dogs: [...filterTemp]
@@ -77,22 +77,26 @@ function rootReducer(state = initialState, action) {
             }
             
         case ORDER_BY_WEIGHT:
-            const sortWeight = action.payload === "W.Max" ?
-        
-            state.dogs.sort(function(a, b) {
-                if( a.Weight_Max > b.Weight_Max) {
+            
+            const sortWeight = action.payload === "W.Max" ?            
+            state.dogs.sort(function(a , b) {
+                let primer = a.Weight_Max ? a.Weight_Max : a.Weight_Min;
+                let segundo = b.Weight_Max ? b.Weight_Max : b.Weight_Min;
+                if( primer < segundo) {
                     return 1;
                 }
-                if(b.Weight_Max > a.Weight_Max) {
+                if(segundo < primer) {
                     return -1;
                 }
                 return 0;
-            }) :
+            }) :             
             state.dogs.sort(function(a, b) {
-                if(a.Weight_Min > b.Weight_Min) {
+                let tercero = a.Weight_Min ? a.Weight_Min : a.Weight_Max;
+                let cuarto = b.Weight_Min ? b.Weight_Min : b.Weight_Max;
+                if(tercero < cuarto) {
                     return -1;
                 }
-                if(b.Weight_Min > a.Weight_Min) {
+                if(cuarto < tercero) {
                     return 1;
                 }
                 return 0;

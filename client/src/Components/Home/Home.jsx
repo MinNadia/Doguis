@@ -47,7 +47,7 @@ console.log("3", dogsAll)
         <div className={st.conteinerDog}>
           {currentDog && currentDog.map((d) => {
             return (
-              <Card image={d.Image} name={d.Name} weight={`${d.Weight_Min} - ${d.Weight_Max} Kg`} temperament={d.Temperaments || d.temperaments.map((t) => t.Name + (", "))} key={d.Id} id={d.Id} />
+              <Card image={d.Image} name={d.Name} weight={`${d.Weight_Min} - ${d.Weight_Max} Kg`} temperament={d.Temperaments} key={d.Id} id={d.Id} />
             )
           })}
         </div>

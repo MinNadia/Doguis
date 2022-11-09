@@ -6,7 +6,6 @@ const { Sequelize } = require('sequelize');
 const router = Router();
 
 
-
 async function apiInfo() {
     const api = await axios.get('https://api.thedogapi.com/v1/breeds')
      let info = api.data.map((d) => {
