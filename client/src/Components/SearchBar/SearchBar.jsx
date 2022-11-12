@@ -1,23 +1,22 @@
 import React from "react";
 import st from "./SearchBar.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getNameDog } from "../../Actions/actions";
+import { getNameDog, cleanStateDog } from "../../Actions/actions";
 
 
 export default function SearchBar() {
     const dispatch = useDispatch();
     const [name, setName] = useState("");
 
-
     function handleInputChange(e) {
-        e.preventDefault()
-        setName(e.target.value);    
+        e.preventDefault();
+        setName(e.target.value);
     };
 
     function handleSubmit(e) {
-        e.preventDefault()
-        dispatch(getNameDog(name));
+        e.preventDefault();
+        dispatch(getNameDog(name));        
     };
     
     return (

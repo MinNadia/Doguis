@@ -1,21 +1,26 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getDogDetails } from "../../Actions/actions";
+import { getDogDetails, cleanStateDog} from "../../Actions/actions";
 import st from "./DogDetails.module.css";
 
 
 
 export default function DogDetails(props) {
     const dispatch = useDispatch();
-    const myDog = useSelector((state) => state.dogDetails)
+    const myDog = useSelector((state) => state.dogDetails);
+    
 
     useEffect(() => {   
         dispatch(getDogDetails(props.match.params.id));
-    },[dispatch])
-    
+        return (
+            dispatch(cleanStateDog())
+        )
+    },[]);
+
 
 
     if(Object.entries(myDog).length) {

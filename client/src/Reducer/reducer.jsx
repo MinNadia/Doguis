@@ -7,7 +7,8 @@ import {
     FILTER_BY_CREATE,
     ORDER_BY_AZ,
     ORDER_BY_WEIGHT,
-    GET_TEMPERAMENTS
+    GET_TEMPERAMENTS,
+    CLEAN_STATE_DOG
 } from "../Actions/actions";
 
 const initialState = {
@@ -32,6 +33,7 @@ function rootReducer(state = initialState, action) {
             };
 
         case GET_NAME_DOG:
+            console.log("1", action.payload)
             return {
                 ...state,
                 dogs: action.payload
@@ -41,6 +43,12 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 dogDetails: action.payload
+            };
+
+        case CLEAN_STATE_DOG:
+            return {
+                ...state,
+                dogDetails: initialState.dogDetails
             };
 
         case POST_NEW_DOG:

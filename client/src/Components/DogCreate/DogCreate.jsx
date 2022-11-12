@@ -72,12 +72,7 @@ export default function DogCreate() {
         });         
     };
 
-    function handleDelete(el) {
-        setInput({
-            ...input,
-            Temperaments: [...input.Temperaments.filter(temp => temp !== el)]
-        });
-    };
+   
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -150,7 +145,7 @@ export default function DogCreate() {
                 
                   {input.Temperaments.map(el => 
                   <div className={st.temp}>
-                  <buton className={st.botonX} onclick={() => handleDelete(el)}>X</buton>
+                 
                   <p>{el}</p>
                 </div>
                 )}

@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { Link } from "react-router-dom";
 import st from "./Home.module.css";
 import Nav from "../Nav/Nav";
 import Card from "../Card/Card";
@@ -12,7 +11,6 @@ import { getAllDogs } from "../../Actions/actions";
 export default function Home() {
   const dispatch = useDispatch()
   const dogsAll = useSelector((state) => state.dogs);
-  // const [order, setOrder] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [dogsPerPage] = useState(8);
   const indexOfLastDog = currentPage * dogsPerPage;

@@ -9,6 +9,7 @@ export const FILTER_BY_CREATE = "FILTER_BY_CREATE";
 export const ORDER_BY_AZ = "ORDER_BY_AZ";
 export const ORDER_BY_WEIGHT = "ORDER_BY_WEIGHT";
 export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS";
+export const CLEAN_STATE_DOG = "CLEAN_STATE_DOG";
 
 
 export function getAllDogs() {
@@ -44,6 +45,18 @@ export function getDogDetails(id) {
                 payload: details.data
             });
         } catch(error) {
+            console.log(error)
+        };
+    };
+};
+
+export function cleanStateDog() {
+    return async function(dispatch) {
+        try {
+            return dispatch({
+                type: CLEAN_STATE_DOG
+            })
+        } catch (error) {
             console.log(error)
         };
     };
