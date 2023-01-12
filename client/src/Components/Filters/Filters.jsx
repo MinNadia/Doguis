@@ -1,11 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { filterByTemperament, filterByCreate, getTemperaments, getAllDogs } from "../../Actions/actions";
+import { filterByTemperament, filterByCreate, getTemperaments } from "../../Actions/actions";
 import st from "./Filters.module.css";
 
 
-export default function Filters() {
+export default function Filters(paginado) {
     const dispatch = useDispatch();
     const [filter, setFilter] = useState('')
     const temp = useSelector(state => state.temperaments)
@@ -14,12 +14,14 @@ export default function Filters() {
         e.preventDefault();
         dispatch(filterByTemperament(e.target.value))
         setFilter(`filter ${e.target.value}`)
+        paginado(1)
     };
 
     function handleFilterCreate(e) {
       e.preventDefault();
       dispatch(filterByCreate(e.target.value))
       setFilter(`filter ${e.target.value}`)
+      paginado(1)
     };
 
     useEffect(() => {

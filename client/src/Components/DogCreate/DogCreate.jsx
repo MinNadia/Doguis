@@ -94,9 +94,15 @@ export default function DogCreate() {
         }));
     };
 
+    // function handleDelete(e) {
+    //     setInput({
+    //       ...input,
+    //       Temperament: input.Temperament.filter((temp) => temp !== el),
+    //     });
+    //   }
+
     useEffect(() => {
         dispatch(getTemperaments());
-        
     }, [dispatch]);
 
     return (
@@ -135,6 +141,7 @@ export default function DogCreate() {
                     <input type='text' value={input.Image} name='Image' onChange={e => handleChange(e)} />
                     {errors.Image && (<h4 className={st.error}>{errors.Image}</h4>)}                    
                 </div>
+                <label>Temperaments: </label>
                 <select onChange={e => handleSelect(e)}>
                     {newTemp.map((t) => {
                         return (
@@ -142,10 +149,9 @@ export default function DogCreate() {
                       )}
                     )};
                 </select>
-                
-                  {input.Temperaments.map(el => 
-                  <div className={st.temp}>
-                 
+                {input.Temperaments.map(el => 
+                <div className={st.temp}>
+                  {/*<button type= 'Submit' className={st.delete} onClick={e => handleDelete(e)}> X </button>*/}
                   <p>{el}</p>
                 </div>
                 )}
