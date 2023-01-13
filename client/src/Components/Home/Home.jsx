@@ -21,6 +21,10 @@ console.log("3", dogsAll)
     setCurrentPage(pageNumber)
   };
 
+  useEffect(()=>{
+    setCurrentPage(1)
+  },[dogsAll]);
+
   function handleClick(e) {
     e.preventDefault();
     dispatch(getAllDogs());
